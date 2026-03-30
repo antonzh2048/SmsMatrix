@@ -32,6 +32,7 @@ public class MainActivity extends Activity {
     private EditText hsUrl;
     private EditText syncDelay;
     private EditText syncTimeout;
+    private EditText roomPrefix;
     private static final String[] PERMISSIONS_REQUIRED = new String[]{
         READ_SMS, SEND_SMS, RECEIVE_SMS, READ_PHONE_STATE, READ_CONTACTS, READ_EXTERNAL_STORAGE
     };
@@ -50,6 +51,7 @@ public class MainActivity extends Activity {
         hsUrl = (EditText) findViewById(R.id.editText_hsUrl);
         syncDelay = (EditText) findViewById(R.id.editText_syncDelay);
         syncTimeout = (EditText) findViewById(R.id.editText_syncTimeout);
+        roomPrefix = (EditText) findViewById(R.id.editText_roomPrefix);
 
         botUsername.setText(sp.getString("botUsername", ""));
         botPassword.setText(sp.getString("botPassword", ""));
@@ -58,6 +60,7 @@ public class MainActivity extends Activity {
         hsUrl.setText(sp.getString("hsUrl", ""));
         syncDelay.setText(sp.getString("syncDelay", "12"));
         syncTimeout.setText(sp.getString("syncTimeout", "30"));
+        roomPrefix.setText(sp.getString("roomPrefix", ""));
 
 
         Button saveButton = (Button) findViewById(R.id.button_save);
@@ -75,6 +78,7 @@ public class MainActivity extends Activity {
                     editor.putString("hsUrl", hsUrl.getText().toString());
                     editor.putString("syncDelay", syncDelay.getText().toString());
                     editor.putString("syncTimeout", syncTimeout.getText().toString());
+                    editor.putString("roomPrefix", roomPrefix.getText().toString());
                     editor.apply();
 
                     Log.e(TAG, "onClick: " + botUsername.getText().toString() );
