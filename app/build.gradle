@@ -44,7 +44,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     /************* Matrix SDK management **************/
-    implementation 'com.github.Bubu:matrix-android-sdk:v0.9.30-no-webrtc'
+    implementation('com.github.Bubu:matrix-android-sdk:v0.9.30-no-webrtc') {
+        exclude group: 'io.realm'
+        exclude group: 'org.matrix.gitlab.matrix-org', module: 'olm'
+    }
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
