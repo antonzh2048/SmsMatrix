@@ -31,7 +31,7 @@ As currently there is no end-to-end encryption implemented in this app, for priv
 # Modifications in this fork
 Added input field for preffix for room names.
 Example: room preffix is set to "SMS " then room names wiil be
-     SMS Contact name 1
-     SMS Contact name 2
-           ... 
+SMS Contact name 1
+SMS Contact name 2
+           
   
