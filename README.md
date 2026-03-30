@@ -33,5 +33,5 @@ As currently there is no end-to-end encryption implemented in this app, for priv
   Example: room preffix is set to "SMS " then room names wiil be
   SMS Contact name 1
   SMS Contact name 2
-        ...
+        ... 
   
