@@ -63,6 +63,7 @@ public class Matrix {
     private String botHSUrl;
 
     private String realUserid;
+    private String roomPrefix;
 
     // Message type constants.
     public static final String MESSAGE_TYPE_TEXT = "m.text";
@@ -70,7 +71,7 @@ public class Matrix {
     public static final String MESSAGE_TYPE_VIDEO = "m.video";
     public static final String MESSAGE_TYPE_NOTICE = "m.notice";
 
-    public Matrix(final Context context, String url, String botUsername, String botPassword, String username, String device, String syncDelay, String syncTimeout) {
+    public Matrix(final Context context, String url, String botUsername, String botPassword, String username, String device, String syncDelay, String syncTimeout, String roomPrefix) {
         this.context = context;
 
         HomeServerConnectionConfig.Builder builder = new HomeServerConnectionConfig.Builder();
@@ -83,6 +84,7 @@ public class Matrix {
         botHSUrl = url;
         this.syncDelay = Integer.parseInt(syncDelay);
         this.syncTimeout = Integer.parseInt(syncTimeout);
+        this.roomPrefix = roomPrefix;
 
         login(botUsername, botPassword);
     }
@@ -190,14 +192,14 @@ public class Matrix {
                                 }
                             });
 
-                            changeDisplayname(info, getContactName(phoneNumber, context));
+                            changeDisplayname(info, roomPrefix + getContactName(phoneNumber, context));
                             Room room = store.getRoom(info);
                             SendMesageToRoom(room, body, type);
                         }
                     });
                 }
             } else {
-                changeDisplayname(room.getRoomId(), getContactName(phoneNumber, context));
+                changeDisplayname(room.getRoomId(), roomPrefix + getContactName(phoneNumber, context));
                 SendMesageToRoom(room, body, type);
             }
         } else {
