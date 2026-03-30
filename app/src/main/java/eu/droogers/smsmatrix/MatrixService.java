@@ -31,6 +31,7 @@ public class MatrixService extends Service {
     private String hsUrl;
     private String syncDelay;
     private String syncTimeout;
+    private String roomPrefix;
     private MMSMonitor mms;
     private String mChannelId = "";
 
@@ -64,9 +65,10 @@ public class MatrixService extends Service {
         hsUrl = sp.getString("hsUrl", "");
         syncDelay = sp.getString("syncDelay", "12");
         syncTimeout = sp.getString("syncTimeout", "60");
+        roomPrefix = sp.getString("roomPrefix", "");
 
         if (mx == null && !botUsername.isEmpty() && !botPassword.isEmpty() && !username.isEmpty() && !device.isEmpty() && !hsUrl.isEmpty() && !syncDelay.isEmpty() && !syncTimeout.isEmpty()) {
-            mx = new Matrix(getApplication(), hsUrl, botUsername, botPassword, username, device, syncDelay, syncTimeout);
+            mx = new Matrix(getApplication(), hsUrl, botUsername, botPassword, username, device, syncDelay, syncTimeout, roomPrefix);
             Log.e(TAG, "onStartCommand: " + hsUrl );
             Toast.makeText(this, "service starting:", Toast.LENGTH_SHORT).show();
         } else if (mx == null) {
