@@ -99,7 +99,7 @@ public class Matrix {
 
             @Override
             public void onMatrixError(MatrixError e) {
-                Log.e(TAG, "onLogin MatrixError" + e);
+                Log.e(TAG, "onLogin MatrixError errcode=" + e.errcode + " message=" + e.error);
             }
 
             @Override
